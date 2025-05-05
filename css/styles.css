@@ -1,0 +1,665 @@
+/* ========================================= */
+/* =========== Базовые стили и сброс ========= */
+/* ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+    padding-top: 60px; /* Отступ сверху для фиксированного хедера */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* ========================================= */
+/* =============== Стили хедера ============== */
+/* ========================================= */
+.site-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Для переноса элементов на маленьких экранах */
+}
+
+.site-title {
+    font-size: 1.8em;
+    margin: 0;
+    flex-shrink: 0; /* Не сжимать заголовок */
+    /* Атрибут title в HTML добавит стандартную подсказку */
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Расстояние между элементами */
+    margin-top: 5px; /* Небольшой отступ на маленьких экранах */
+}
+
+.vk-link {
+    display: inline-block;
+    height: 30px; /* Высота иконки */
+    /* Атрибут title в HTML добавит стандартную подсказку */
+}
+
+.vk-icon {
+    height: 100%;
+    filter: invert(100%); /* Белая иконка на темном фоне */
+    transition: opacity 0.3s ease;
+}
+
+.vk-link:hover .vk-icon {
+    opacity: 0.8;
+}
+
+.contact-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    /* Атрибут title в HTML добавит стандартную подсказку */
+}
+
+.contact-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* ========================================= */
+/* =========== Стили временной шкалы ======= */
+/* ========================================= */
+.main-content {
+    padding: 40px 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Вертикальная линия шкалы */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #555;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    z-index: 0;
+}
+
+.event {
+    padding: 10px 30px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1; /* Над линией */
+    /* Убираем стандартный outline и добавляем свой для фокуса с клавиатуры */
+    outline: none;
+}
+
+/* Видимый outline для фокусировки с клавиатуры */
+.event:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Выделение активного события */
+.event.active {
+    background-color: #e9ecef; /* Светлее фон для активного */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Более заметная тень */
+    border-color: #007bff;
+}
+
+/* Расположение событий поочередно слева и справа */
+.event:nth-child(odd) {
+    left: 0;
+    padding-right: 40px; /* Пространство для точки */
+    text-align: right;
+}
+
+.event:nth-child(even) {
+    left: 50%;
+    padding-left: 40px; /* Пространство для точки */
+    text-align: left;
+}
+
+/* Точки на временной шкале */
+.dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    border-radius: 50%;
+    z-index: 1;
+    border: 3px solid #fff; /* Белая рамка для видимости на линии */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Изменение цвета точки у активного события */
+.event.active .dot {
+    background-color: #dc3545;
+    border-color: #e9ecef;
+}
+
+/* Расположение точек слева и справа */
+.event:nth-child(odd) .dot {
+    right: -10px; /* Половина ширины точки */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.event:nth-child(even) .dot {
+    left: -10px; /* Половина ширины точки */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Стили для блока с годом и заголовком события */
+.year {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    background-color: #fff; /* Белый фон */
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Обтекание по содержимому */
+    margin-bottom: 10px; /* Отступ перед описанием */
+}
+
+/* Эффект наведения на событие (кроме активного) */
+.event:hover:not(.active) {
+    transform: translateY(-5px);
+}
+
+.event:hover:not(.active) .dot {
+    background-color: #0056b3;
+    border-color: #f8f8f8;
+}
+
+/* Стили для блока описания события, которое появляется inline */
+.event-description {
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; /* Отступ от заголовка года */
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.7;
+    text-align: left; /* Выравнивание текста описания всегда по левому краю */
+
+    /* Скрываем по умолчанию и готовим для анимации */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out;
+    padding-top: 0; /* Убираем padding, когда скрыт */
+    padding-bottom: 0;
+    margin-top: 0; /* Убираем margin, когда скрыт */
+    margin-bottom: 0;
+    /* Добавим outline для фокуса, когда описание активно (переводим на него фокус в JS) */
+    outline: none;
+    &:focus {
+         outline: 2px solid #007bff;
+         outline-offset: 2px;
+    }
+}
+
+/* Показываем описание, когда родительский .event активен */
+.event.active .event-description {
+    max-height: 1000px; /* Достаточно большое значение для анимации (убедитесь, что оно больше самого длинного описания) */
+    opacity: 1;
+    padding: 10px 15px; /* Восстанавливаем padding */
+    margin-top: 10px; /* Восстанавливаем margin */
+}
+
+/* Стили для изображений внутри описания (превью) */
+.event-description img {
+    max-width: 100%; /* Изображение не должно выходить за пределы контейнера */
+    height: auto; /* Сохраняем пропорции */
+    display: block; /* Изображения как блочные элементы */
+    margin: 10px auto; /* Центрируем изображения и добавляем отступы */
+    border-radius: 5px; /* Немного скругляем углы изображений */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Небольшая тень для изображений */
+    cursor: pointer; /* Показываем, что изображение кликабельно */
+    transition: transform 0.2s ease; /* Анимация при наведении */
+}
+
+.event-description img:hover {
+    transform: scale(1.02); /* Небольшое увеличение при наведении */
+}
+
+
+/* ========================================= */
+/* ========= Стили модальных окон ========== */
+/* ========================================= */
+
+/* Оверлей (используется для обоих модалок) */
+#overlay {
+    display: none; /* Скрыт по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1001; /* Над хедером */
+    /* Анимация появления */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#overlay.visible {
+     display: block; /* Делаем видимым */
+     opacity: 1;
+}
+
+/* Общие стили для модальных коробов (форма и галерея) */
+.info-box {
+    display: none; /* Скрыт по умолчанию */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1002; /* Над оверлеем */
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto; /* Включаем скролл, если контент не помещается */
+
+    /* Анимация появления */
+    opacity: 0;
+    transform: translate(-50%, -60%); /* Сдвиг для анимации */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.info-box.visible {
+     /* display управляется в #overlay.visible */
+     opacity: 1;
+     transform: translate(-50%, -50%); /* Конечная позиция */
+}
+
+/* Кнопка закрытия модальных окон */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s ease;
+    z-index: 10; /* Чтобы кнопка была над содержимым */
+}
+
+.close-btn::before {
+    content: '×'; /* Символ "умножение" для закрытия */
+}
+
+.close-btn:hover {
+    color: #777;
+}
+
+/* Стили для модального окна формы обратной связи */
+#contactBox.info-box {
+     /* Применяем общие стили .info-box */
+     /* Дополнительные стили, если нужны только для формы */
+}
+
+/* Стили, специфичные для формы обратной связи */
+.contact-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-form input[type="email"],
+.contact-form input[type="text"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Разрешаем изменение размера по вертикали */
+}
+
+.contact-form button.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button.submit-btn:hover {
+    background-color: #218838;
+}
+
+
+/* Стили для модальной галереи изображений */
+#imageGalleryModal.info-box {
+    /* Применяем общие стили .info-box */
+    /* Переопределяем display для flex, чтобы содержимое центрировалось */
+    display: flex; /* Изначально скрыт через .info-box:not(.visible) */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Уменьшим padding по сравнению с формой */
+    /* Убираем скролл, так как изображение масштабируется */
+    overflow-y: hidden;
+}
+
+/* На маленьких экранах модалка галереи может быть почти во весь экран */
+@media (max-width: 768px) {
+    #imageGalleryModal.info-box {
+         padding: 10px;
+    }
+}
+
+/* Контейнер для изображения и кнопок навигации в галерее */
+#imageGalleryModal .gallery-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Для позиционирования стрелок */
+    width: 100%; /* Занимает всю доступную ширину в модалке */
+    height: 100%; /* Занимает всю доступную высоту */
+    max-height: 80vh; /* Ограничиваем высоту, чтобы оставалось место для подписи/кнопок */
+    margin-bottom: 15px; /* Отступ перед подписью */
+}
+
+/* Большое изображение в галерее */
+#imageGalleryModal #galleryImage {
+    display: block;
+    max-width: 100%; /* Изображение не должно выходить за пределы контейнера */
+    max-height: 100%; /* Изображение не должно выходить за пределы контейнера */
+    height: auto; /* Сохраняем пропорции */
+    width: auto; /* Сохраняем пропорции */
+    object-fit: contain; /* Убедимся, что изображение полностью видно */
+    transition: opacity 0.3s ease; /* Плавное появление изображения */
+    /* Добавим outline для фокуса, когда изображение активно (переводим на него фокус в JS) */
+    outline: none;
+    &:focus {
+         outline: 2px solid #007bff;
+         outline-offset: 2px;
+    }
+}
+
+/* Скрываем изображение при смене, чтобы оно появлялось плавно */
+#imageGalleryModal.info-box.visible #galleryImage:not([src]) {
+     opacity: 0;
+}
+
+
+/* Кнопки навигации в галерее (стрелки) */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 2em;
+    z-index: 5; /* Над изображением */
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    border-radius: 3px;
+    opacity: 0.8; /* Немного прозрачности по умолчанию */
+    user-select: none; /* Не выделять текст стрелки */
+    /* Используем flex, чтобы стрелка центрировалась, даже если символ больше padding */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.gallery-nav:hover:not(:disabled) {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+}
+
+/* Стили для кнопки "Читать статью" */
+.read-article-btn {
+    display: inline-block; /* Или block, если хотите, чтобы она занимала всю ширину */
+    background-color: #28a745; /* Зеленый фон (как кнопка Отправить в форме) */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 15px; /* Отступ сверху от текста/изображений */
+    text-decoration: none; /* Убираем подчеркивание, если делать через <a href> */
+    transition: background-color 0.3s ease;
+    /* Для центрирования, если display: block и родительский text-align: left; */
+     margin-left: auto;
+     margin-right: auto;
+}
+
+.read-article-btn:hover {
+    background-color: #218838; /* Темнее зеленый при наведении */
+}
+
+.read-article-btn:focus-visible { /* Видимый фокус для доступности */
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Видимый фокус при навигации с клавиатуры */
+.gallery-nav:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+
+.gallery-nav.gallery-prev {
+    left: 10px;
+}
+
+.gallery-nav.gallery-next {
+    right: 10px;
+}
+
+/* Неактивные кнопки */
+.gallery-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Подпись/счетчик изображений в галерее */
+.gallery-caption {
+    color: #555;
+    font-size: 0.9em;
+    text-align: center;
+    /* margin-top: 15px; */ /* Уже добавлено в .gallery-content */
+}
+
+/* Убедимся, что скрытые элементы действительно не занимают место и недоступны */
+.overlay:not(.visible),
+.info-box:not(.visible) {
+    display: none !important; /* Используем !important, чтобы переопределить flex в .info-box */
+}
+
+/* Управляем display при видимости через JS добавлением/удалением класса .visible */
+.overlay.visible {
+    display: block; /* Оверлей - блочный */
+}
+
+/* Переопределяем display для модальных коробов при видимости */
+#contactBox.info-box.visible {
+    display: block; /* Форма - блочный контент */
+}
+
+#imageGalleryModal.info-box.visible {
+     display: flex; /* Галерея - flex контейнер */
+}
+
+
+/* ========================================= */
+/* ============ Адаптивность =============== */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .site-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .header-links {
+        width: 100%;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    /* Корректировка временной шкалы для маленьких экранов */
+    .timeline::after {
+        left: 20px; /* Перемещаем линию влево */
+    }
+
+    .event {
+        width: 100%; /* Полная ширина */
+        padding-left: 40px; /* Пространство для точки слева */
+        padding-right: 10px; /* Сброс правого отступа */
+        text-align: left; /* Выравнивание всего текста по левому краю */
+    }
+
+    /* Отступ для описания на узких экранах */
+     .event-description {
+         margin-left: 0; /* Убираем возможный отступ слева/справа */
+         margin-right: 0;
+     }
+
+    /* Расположение событий и точек на маленьких экранах */
+    .event:nth-child(odd),
+    .event:nth-child(even) {
+        left: 0; /* Сброс левого положения */
+    }
+
+    .event:nth-child(odd) .dot,
+    .event:nth-child(even) .dot {
+        left: 10px; /* Позиция точки слева */
+        right: auto; /* Сброс правого положения */
+    }
+
+    .year {
+         display: block; /* Делаем год блочным элементом */
+    }
+
+     /* На маленьких экранах точка активного элемента должна быть слева */
+     .event.active .dot {
+        left: 10px; /* Остается слева */
+        right: auto; /* Убедимся, что right auto */
+     }
+
+    /* Модальные окна на маленьких экранах */
+    #contactBox.info-box,
+    #imageGalleryModal.info-box {
+        width: 95%; /* Шире модальные окна */
+        padding: 20px;
+    }
+
+    /* Кнопки навигации галереи на маленьких экранах */
+    .gallery-nav {
+        padding: 5px 10px; /* Меньшие кнопки */
+        font-size: 1.5em;
+    }
+     .gallery-nav.gallery-prev {
+         left: 5px;
+     }
+     .gallery-nav.gallery-next {
+         right: 5px;
+     }
+
+    /* Улучшенное выделение фокусировки для маленьких экранов */
+    .event:focus-visible {
+         outline: 2px solid #007bff;
+         outline-offset: 2px;
+    }
+}
+
+
+/* ========================================= */
+/* ============ Стили футера ============= */
+/* ========================================= */
+.site-footer {
+    background-color: #333; /* Темный фон */
+    color: #fff; /* Белый текст */
+    text-align: center; /* Выравнивание по центру */
+    padding: 30px 0; /* Увеличим вертикальные отступы */
+    margin-top: 60px; /* Отступ сверху, чтобы отделить от основного контента */
+    font-size: 0.9em; /* Немного уменьшим размер текста */
+    border-top: 1px solid #555; /* Добавим тонкую верхнюю границу */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Добавим небольшую тень сверху */
+}
+
+.site-footer .container {
+    /* Контейнер уже центрирует и ограничивает ширину */
+    /* Дополнительные стили для содержимого футера внутри контейнера, если нужны */
+}
+
+/* Стили для ссылок в футере (если они появятся) */
+.site-footer a {
+    color: #007bff; /* Цвет ссылок */
+    text-decoration: none; /* Убрать подчеркивание */
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #66b5ff; /* Цвет ссылок при наведении */
+    text-decoration: underline; /* Подчеркивание при наведении */
+}

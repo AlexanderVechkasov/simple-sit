@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Определяем кодировку документа как UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Обеспечиваем адаптивность на мобильных устройствах -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок страницы, будет заменён динамически -->
+    <title id="articlePageTitle">Загрузка статьи...</title>
+    <!-- Подключение глобальных стилей сайта -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Подключение стилей, специфичных для статей -->
+    <link rel="stylesheet" href="css/article.css">
+    <!-- Скрипт с данными статьи (загружает JSON, данные и т.д.) -->
+    <script src="js/data.js"></script>
+</head>
+<body>
+    <!-- Шапка сайта с названием и навигацией -->
+    <header class="site-header">
+        <div class="container header-content">
+            <!-- Название сайта с атрибутом title для подсказки -->
+            <h1 class="site-title" title="Главная страница Исторической шкалы России">Историческая шкала России</h1>
+            <div class="header-links">
+                <!-- Ссылка на группу ВКонтакте, открывается в новой вкладке -->
+                <a href="https://vk.com" target="_blank" class="vk-link" aria-label="Мы во ВКонтакте" title="Перейти на нашу страницу ВКонтакте">
+                    <img src="img/vk-icon.svg" alt="VK" class="vk-icon">
+                </a>
+                <!-- Кнопка для открытия формы обратной связи -->
+                <button id="contactBtn" class="contact-btn" type="button" title="Нажмите, чтобы открыть форму обратной связи">Связаться с нами</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент статьи -->
+    <main class="article-main">
+        <div class="container">
+            <article>
+                <!-- Заголовок статьи, заполняется динамически -->
+                <h1 class="article-title" id="articleTitle">Заголовок Статьи</h1>
+                <!-- Метаданные: автор, дата и т.п., заполняются скриптом -->
+                <p class="article-meta" id="articleMeta">Мета-информация</p>
+                <!-- Основное изображение статьи -->
+                <img src="" alt="Главное изображение статьи" class="article-image-main" id="mainArticleImage">
+                <!-- Подпись к изображению -->
+                <p id="mainImageCaption" class="image-caption"></p>
+                <!-- Содержимое статьи, наполняется через JS -->
+                <div class="article-content" id="articleContent">
+                    <p>Статья загружается...</p>
+                </div>
+
+                <!-- Ссылка возврата на главную страницу с шкалой -->
+                <div class="article-footer">
+                    <a href="index.html" class="back-link" title="Вернуться на главную">&larr; Вернуться на шкалу</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Нижний колонтитул сайта -->
+    <footer class="site-footer">
+        <div class="container">
+            © 2025 Историческая шкала России
+        </div>
+    </footer>
+
+    <!-- Полупрозрачный фон для модальных окон -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Модальное окно обратной связи -->
+    <div id="contactBox" class="info-box">
+        <!-- Кнопка закрытия модального окна -->
+        <button id="contactCloseBtn" class="close-btn" aria-label="Закрыть"></button>
+        <!-- Форма обратной связи -->
+        <form id="contactForm" class="contact-form">
+            <!-- Поле ввода Email -->
+            <label for="email">Ваш Email:
+                <input type="email" id="email" name="email" required>
+            </label>
+            <!-- Поле темы сообщения -->
+            <label for="subject">Тема:
+                <input type="text" id="subject" name="subject" required>
+            </label>
+            <!-- Текстовое поле для сообщения -->
+            <label for="message">Сообщение:
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </label>
+            <!-- Кнопка отправки формы -->
+            <button type="submit" class="submit-btn">Отправить</button>
+        </form>
+    </div>
+
+    <!-- Модальное окно галереи изображений -->
+    <div id="imageGalleryModal" class="info-box">
+        <!-- Кнопка закрытия галереи -->
+        <button id="galleryCloseBtn" class="close-btn" aria-label="Закрыть галерею"></button>
+        <!-- Контент галереи: навигация и текущее изображение -->
+        <div class="gallery-content">
+            <!-- Кнопка предыдущего изображения -->
+            <button class="gallery-nav gallery-prev" aria-label="Предыдущее изображение">&#10094;</button>
+            <!-- Текущее изображение галереи -->
+            <img id="galleryImage" src="" alt="Текущее изображение в галерее">
+            <!-- Кнопка следующего изображения -->
+            <button class="gallery-nav gallery-next" aria-label="Следующее изображение">&#10095;</button>
+        </div>
+        <!-- Подпись к изображению с aria-live для доступности -->
+        <div class="gallery-caption" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Основной скрипт страницы: управление загрузкой статьи и модалками -->
+    <script src="js/article-script.js"></script>
+</body>
+</html>
