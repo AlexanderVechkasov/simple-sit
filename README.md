@@ -18,7 +18,7 @@
 2. Загрузите файл в репозиторий (Add file -> Upload files)
 3. Раскомментируйте строку ниже:
 -->
-![Превью сайта](preview.png)
+<!-- ![Превью сайта](preview.png) -->
 
 ---
 
@@ -48,5 +48,5 @@
 
 1. **Клонируйте репозиторий:**
    ```bash
-git clone https://github.com/AlexanderVechkasov/simple-sit.git
-cd simple-sit
+   git clone [https://github.com/AlexanderVechkasov/simple-sit.git](https://github.com/AlexanderVechkasov/simple-sit.git)
+   cd simple-sit
