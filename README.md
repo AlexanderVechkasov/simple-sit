@@ -1,10 +1,10 @@
-# Simple Site 🌐
+# Историческая школа России 🏛️
 
 [![Live Demo](https://img.shields.io/badge/Demo-Online-success?style=for-the-badge&logo=githubpages&logoColor=white)](https://alexandervechkasov.github.io/simple-sit/)
 [![GitHub repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/AlexanderVechkasov/simple-sit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-> Легкий, быстрый и адаптивный веб-сайт, опубликованный с помощью бесплатного хостинга GitHub Pages.
+> Интерактивный исторический таймлайн и образовательный лендинг, опубликованный на GitHub Pages.
 
 🔗 **Рабочая версия сайта:** [alexandervechkasov.github.io/simple-sit](https://alexandervechkasov.github.io/simple-sit/)
 
@@ -12,14 +12,7 @@
 
 ## 📸 Превью
 
-<!-- 
-Чтобы добавить скриншот:
-1. Сделайте снимок страницы и назовите его preview.png
-2. Загрузите файл в репозиторий (Add file -> Upload files)
-3. Раскомментируйте строку ниже:
--->
-<!-- ![Превью сайта](preview.png) -->
-
+![Превью сайта](preview.png)
 ---
 
 ## ✨ Особенности
