@@ -5,78 +5,67 @@
 /* Основная область контента статьи */
 .article-main {
     padding: 40px 0;
-    /* Можно добавить белый фон для контента статьи, если main не занимает всю ширину */
-    /* background-color: #fff; */
-    /* Легкая тень для всей области контента */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); */
-}
-
-/* Контейнер (используется тот же, что и на главной) */
-.article-main .container {
-    /* Стили унаследуются из styles.css (max-width, margin, padding) */
 }
 
 /* Элемент article для семантической разметки и ограничения ширины */
 .article-main article {
-    max-width: 800px; /* Ограничиваем максимальную ширину текста для удобства чтения */
-    margin: 0 auto; /* Центрируем блок article */
-    padding: 20px; /* Внутренние отступы */
-    background-color: #fff; /* Белый фон для блока статьи */
-    border-radius: 8px; /* Скругленные углы */
-    /* Тень для самой карточки статьи */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Заголовок статьи */
-#articleTitle { /* Используем ID для точности */
+#articleTitle {
     font-size: 2em;
     margin-bottom: 15px;
     color: #333;
-    text-align: center; /* Центрируем заголовок */
-    line-height: 1.3; /* Межстрочный интервал */
+    text-align: center;
+    line-height: 1.3;
+    word-break: break-word;
 }
 
-/* Мета-информация (дата, автор и т.д.) */
-#articleMeta { /* Используем ID для точности */
+/* Мета-информация (дата, регион, результат и т.д.) */
+#articleMeta {
     font-size: 0.9em;
     color: #777;
-    text-align: center; /* Центрируем мета-информацию */
+    text-align: center;
     margin-bottom: 25px;
-    border-bottom: 1px solid #eee; /* Тонкая линия под мета-информацией */
+    border-bottom: 1px solid #eee;
     padding-bottom: 15px;
 }
 
 /* Главное изображение статьи */
-#mainArticleImage { /* Используем ID для точности */
-    display: block; /* Изображение как блочный элемент */
-    max-width: 100%; /* Не выходит за пределы контейнера */
-    height: auto; /* Сохраняет пропорции */
-    margin: 0 auto 5px auto; /* Центрируем и уменьшаем нижний отступ перед подписью */
-    border-radius: 5px; /* Скругленные углы */
-    /* Обновленная, более выразительная тень для главного изображения (стиль macOS) */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Увеличено размытие и непрозрачность */
+#mainArticleImage {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 5px auto;
+    border-radius: 5px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Подпись под главным изображением (если есть) */
-#mainImageCaption { /* Используем ID для точности */
-    display: block; /* Блочный элемент */
-    text-align: center; /* Выравнивание по центру */
+/* Подпись под главным изображением */
+#mainImageCaption {
+    display: block;
+    text-align: center;
     font-size: 0.85em;
     color: #777;
-    margin-bottom: 25px; /* Отступ после подписи */
+    margin-bottom: 25px;
 }
 
 /* Контейнер для основного содержимого статьи */
-#articleContent { /* Используем ID для точности */
+#articleContent {
     font-size: 1.1em;
     line-height: 1.8;
     color: #444;
 }
 
-/* Стили для элементов внутри контента статьи (параграфы, заголовки, списки, цитаты, изображения) */
+/* Элементы внутри контента статьи */
 #articleContent p {
-    margin-bottom: 1em; /* Отступ между параграфами */
+    margin-bottom: 1em;
 }
 
 #articleContent h2 {
@@ -84,7 +73,7 @@
     margin-top: 20px;
     margin-bottom: 10px;
     color: #333;
-    border-bottom: 1px solid #eee; /* Линия под подзаголовками */
+    border-bottom: 1px solid #eee;
     padding-bottom: 5px;
 }
 
@@ -98,8 +87,8 @@
 #articleContent ul,
 #articleContent ol {
     margin-bottom: 1em;
-    margin-left: 20px; /* Отступ для маркеров/номеров */
-    padding-left: 0; /* Убираем стандартный padding, используем margin-left */
+    margin-left: 20px;
+    padding-left: 0;
 }
 
 #articleContent li {
@@ -107,87 +96,144 @@
 }
 
 #articleContent blockquote {
-    margin: 1em 20px; /* Отступы по бокам и сверху/снизу */
+    margin: 1em 20px;
     padding: 10px 20px;
-    border-left: 4px solid #007bff; /* Синяя полоса слева */
-    background-color: #f8f9fa; /* Светлый фон */
-    font-style: italic; /* Курсив */
+    border-left: 4px solid #007bff;
+    background-color: #f8f9fa;
+    font-style: italic;
     color: #555;
 }
 
-/* Стили для изображений внутри основного контента статьи */
+/* Изображения внутри контента */
 #articleContent img {
-     max-width: 100%; /* Не выходит за пределы контейнера */
-     height: auto; /* Сохраняет пропорции */
-     display: block; /* Блочный элемент */
-     margin: 15px auto; /* Центрируем изображения и добавляем отступы */
-     border-radius: 5px; /* Скругленные углы */
-     /* Обновленная, более выразительная тень для изображений в контенте (стиль macOS) */
-     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Увеличено размытие и непрозрачность */
-     cursor: pointer; /* Показываем, что изображение кликабельно */
-     /* Плавный переход для transform и box-shadow */
-     transition: transform 0.2s ease, box-shadow 0.3s ease;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border-radius: 5px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* Эффект при наведении на изображения в контенте статьи */
 #articleContent img:hover {
-     transform: scale(1.02); /* Небольшое увеличение */
-     /* Опционально: можно сделать тень еще более выраженной при наведении */
-     /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
+    transform: scale(1.02);
 }
 
-/* Футер статьи (если есть блок со ссылкой "Назад") */
+/* Футер статьи */
 .article-footer {
-    margin-top: 30px; /* Отступ сверху */
-    padding-top: 20px; /* Внутренний отступ сверху */
-    border-top: 1px solid #eee; /* Тонкая верхняя линия */
-    text-align: center; /* Выравнивание по центру */
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
 }
 
-/* Стили для ссылки "Вернуться на шкалу" */
+/* Кнопка "Вернуться на шкалу" */
 .back-link {
     display: inline-block;
-    background-color: transparent; /* Прозрачный фон */
-    color: #007bff; /* Синий текст */
-    border: 1px solid #007bff; /* Синяя рамка */
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
     font-size: 1em;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Добавляем все переходы */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .back-link:hover {
-    background-color: #007bff; /* Синий фон при наведении */
-    color: white; /* Белый текст при наведении */
-    border-color: #007bff; /* Рамка остается синей (или можно убрать border) */
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
 }
 
-.back-link:focus-visible { /* Стиль фокуса для доступности */
+.back-link:focus-visible {
     outline: 2px solid #007bff;
     outline-offset: 2px;
-    background-color: #007bff; /* Делаем ее синей и при фокусе */
+    background-color: #007bff;
     color: white;
 }
 
 /* ========================================= */
-/* =========== Адаптивность статьи ========= */
+/* =========== Шкала времени (слои) ======== */
+/* ========================================= */
+
+/* Вертикальная ось шкалы всегда поверх фонов карточек */
+.timeline::before,
+.timeline-line {
+    z-index: 1;
+}
+
+/* Точки-маркеры поверх вертикальной оси */
+.timeline-dot,
+.timeline-marker,
+.timeline-item::after {
+    z-index: 2;
+}
+
+/* ========================================= */
+/* =========== Адаптивность (Мобильные) ===== */
 /* ========================================= */
 
 @media (max-width: 768px) {
+    /* 1. Отступ сверху: компенсирует высоту фиксированной шапки и вырез экрана */
     .article-main {
-        padding: 20px 0; /* Уменьшим отступы на узких экранах */
+        padding-top: calc(85px + env(safe-area-inset-top, 0px));
+        padding-bottom: 25px;
     }
 
     .article-main article {
-         padding: 15px; /* Уменьшим внутренние отступы статьи */
+        padding: 15px;
     }
 
-    #articleTitle { font-size: 1.6em; } /* Уменьшим размер заголовка */
-    #articleMeta { font-size: 0.85em; } /* Уменьшим размер метаданных */
+    /* 2. Заголовок и метаданные статьи */
+    #articleTitle,
+    .article-title {
+        font-size: 1.4em;
+        line-height: 1.3;
+        margin-bottom: 10px;
+        scroll-margin-top: 90px;
+    }
 
-    #articleContent { font-size: 1em; } /* Уменьшим размер текста контента */
-    #articleContent h2 { font-size: 1.4em; }
-    #articleContent h3 { font-size: 1.1em; }
-    #articleContent blockquote { margin: 1em 10px; padding: 10px; } /* Уменьшим отступы цитат */
+    #articleMeta,
+    .article-meta {
+        font-size: 0.85em;
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+    }
+
+    /* 3. Текст контента статьи */
+    #articleContent {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    #articleContent h2 {
+        font-size: 1.3em;
+    }
+
+    #articleContent h3 {
+        font-size: 1.1em;
+    }
+
+    #articleContent blockquote {
+        margin: 1em 10px;
+        padding: 10px 14px;
+    }
+
+    /* 4. Шкала времени: раскрытый блок не перекрывает вертикальную линию */
+    .timeline-item.active,
+    .timeline-item.expanded {
+        position: relative;
+        z-index: 0; /* Фон блока остается под линией (у линии z-index: 1) */
+    }
+
+    /* Заголовки плашек на шкале времени */
+    .timeline-item h2,
+    .timeline-item-title,
+    .timeline-header {
+        font-size: 0.95rem;
+        line-height: 1.35;
+        font-weight: 600;
+    }
 }
