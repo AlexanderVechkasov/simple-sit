@@ -91,6 +91,7 @@ body {
     padding: 20px 0;
 }
 
+/* Линия шкалы на нижнем слое */
 .timeline::after {
     content: '';
     position: absolute;
@@ -103,6 +104,7 @@ body {
     z-index: 1;
 }
 
+/* Карточка события выше линии */
 .event {
     padding: 10px 30px;
     position: relative;
@@ -139,13 +141,14 @@ body {
     text-align: left;
 }
 
+/* Точки поверх линии и фона карточек */
 .dot {
     position: absolute;
     width: 20px;
     height: 20px;
     background-color: #007bff;
     border-radius: 50%;
-    z-index: 10;
+    z-index: 3;
     border: 3px solid #fff;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -486,6 +489,7 @@ body {
     text-decoration: underline;
 }
 
+/* Мобильная версия */
 @media (max-width: 768px) {
     body {
         padding-top: calc(90px + env(safe-area-inset-top, 0px));
@@ -514,8 +518,8 @@ body {
     }
 
     .event {
-        width: calc(100% - 24px);
-        padding-left: 20px;
+        width: calc(100% - 20px);
+        padding-left: 25px;
         padding-right: 10px;
         text-align: left;
         border-radius: 8px;
@@ -524,17 +528,18 @@ body {
 
     .event:nth-child(odd),
     .event:nth-child(even) {
-        left: 24px;
+        left: 20px;
         padding-right: 10px;
         text-align: left;
     }
 
+    /* Точки строго поверх линии */
     .event:nth-child(odd) .dot,
     .event:nth-child(even) .dot,
     .event.active .dot {
-        left: -14px;
+        left: -10px;
         right: auto;
-        z-index: 10;
+        z-index: 3;
     }
 
     .event-description {
