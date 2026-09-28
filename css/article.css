@@ -139,6 +139,7 @@
     color: white;
 }
 
+/* Мобильная версия статьи */
 @media (max-width: 768px) {
     .article-main {
         padding-top: calc(85px + env(safe-area-inset-top, 0px));
