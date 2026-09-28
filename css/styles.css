@@ -100,7 +100,7 @@ body {
     bottom: 0;
     left: 50%;
     margin-left: -2px;
-    z-index: 2;
+    z-index: 1;
 }
 
 .event {
@@ -112,7 +112,7 @@ body {
     cursor: pointer;
     border-radius: 8px;
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    z-index: 1;
+    z-index: 2;
     outline: none;
 }
 
@@ -145,7 +145,7 @@ body {
     height: 20px;
     background-color: #007bff;
     border-radius: 50%;
-    z-index: 3;
+    z-index: 10;
     border: 3px solid #fff;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -510,21 +510,21 @@ body {
     .timeline::after {
         left: 20px;
         margin-left: -2px;
-        z-index: 2;
+        z-index: 1;
     }
 
     .event {
-        width: calc(100% - 20px);
-        padding-left: 25px;
+        width: calc(100% - 24px);
+        padding-left: 20px;
         padding-right: 10px;
         text-align: left;
         border-radius: 8px;
-        z-index: 1;
+        z-index: 2;
     }
 
     .event:nth-child(odd),
     .event:nth-child(even) {
-        left: 20px;
+        left: 24px;
         padding-right: 10px;
         text-align: left;
     }
@@ -532,9 +532,9 @@ body {
     .event:nth-child(odd) .dot,
     .event:nth-child(even) .dot,
     .event.active .dot {
-        left: -10px;
+        left: -14px;
         right: auto;
-        z-index: 3;
+        z-index: 10;
     }
 
     .event-description {
