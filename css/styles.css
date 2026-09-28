@@ -1,3 +1,7 @@
+/* ========================================= */
+/* Базовые стили и сброс                     */
+/* ========================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,6 +21,10 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
+
+/* ========================================= */
+/* Хедер                                     */
+/* ========================================= */
 
 .site-header {
     background-color: #333;
@@ -80,6 +88,10 @@ body {
     background-color: #0056b3;
 }
 
+/* ========================================= */
+/* Временная шкала                           */
+/* ========================================= */
+
 .main-content {
     padding: 40px 0;
 }
@@ -91,7 +103,6 @@ body {
     padding: 20px 0;
 }
 
-/* Линия шкалы на нижнем слое */
 .timeline::after {
     content: '';
     position: absolute;
@@ -104,7 +115,6 @@ body {
     z-index: 1;
 }
 
-/* Карточка события выше линии */
 .event {
     padding: 10px 30px;
     position: relative;
@@ -141,7 +151,6 @@ body {
     text-align: left;
 }
 
-/* Точки поверх линии и фона карточек */
 .dot {
     position: absolute;
     width: 20px;
@@ -238,6 +247,10 @@ body {
 .event-description img:hover {
     transform: scale(1.02);
 }
+
+/* ========================================= */
+/* Модальные окна                            */
+/* ========================================= */
 
 #overlay {
     display: none;
@@ -467,6 +480,10 @@ body {
     display: flex;
 }
 
+/* ========================================= */
+/* Футер                                     */
+/* ========================================= */
+
 .site-footer {
     background-color: #333;
     color: #fff;
@@ -489,7 +506,10 @@ body {
     text-decoration: underline;
 }
 
-/* Мобильная версия */
+/* ========================================= */
+/* Адаптивность (Мобильные экраны)           */
+/* ========================================= */
+
 @media (max-width: 768px) {
     body {
         padding-top: calc(90px + env(safe-area-inset-top, 0px));
@@ -533,7 +553,6 @@ body {
         text-align: left;
     }
 
-    /* Точки строго поверх линии */
     .event:nth-child(odd) .dot,
     .event:nth-child(even) .dot,
     .event.active .dot {
