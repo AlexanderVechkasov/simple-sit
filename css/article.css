@@ -1,13 +1,7 @@
-/* ========================================= */
-/* =========== Стили страниц статей ======== */
-/* ========================================= */
-
-/* Основная область контента статьи */
 .article-main {
     padding: 40px 0;
 }
 
-/* Элемент article для семантической разметки и ограничения ширины */
 .article-main article {
     max-width: 800px;
     margin: 0 auto;
@@ -17,7 +11,6 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Заголовок статьи */
 #articleTitle {
     font-size: 2em;
     margin-bottom: 15px;
@@ -27,7 +20,6 @@
     word-break: break-word;
 }
 
-/* Мета-информация (дата, регион, результат и т.д.) */
 #articleMeta {
     font-size: 0.9em;
     color: #777;
@@ -37,7 +29,6 @@
     padding-bottom: 15px;
 }
 
-/* Главное изображение статьи */
 #mainArticleImage {
     display: block;
     max-width: 100%;
@@ -47,7 +38,6 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Подпись под главным изображением */
 #mainImageCaption {
     display: block;
     text-align: center;
@@ -56,14 +46,12 @@
     margin-bottom: 25px;
 }
 
-/* Контейнер для основного содержимого статьи */
 #articleContent {
     font-size: 1.1em;
     line-height: 1.8;
     color: #444;
 }
 
-/* Элементы внутри контента статьи */
 #articleContent p {
     margin-bottom: 1em;
 }
@@ -104,7 +92,6 @@
     color: #555;
 }
 
-/* Изображения внутри контента */
 #articleContent img {
     max-width: 100%;
     height: auto;
@@ -120,7 +107,6 @@
     transform: scale(1.02);
 }
 
-/* Футер статьи */
 .article-footer {
     margin-top: 30px;
     padding-top: 20px;
@@ -128,7 +114,6 @@
     text-align: center;
 }
 
-/* Кнопка "Вернуться на шкалу" */
 .back-link {
     display: inline-block;
     background-color: transparent;
@@ -154,29 +139,7 @@
     color: white;
 }
 
-/* ========================================= */
-/* =========== Шкала времени (слои) ======== */
-/* ========================================= */
-
-/* Вертикальная ось шкалы всегда поверх фонов карточек */
-.timeline::before,
-.timeline-line {
-    z-index: 1;
-}
-
-/* Точки-маркеры поверх вертикальной оси */
-.timeline-dot,
-.timeline-marker,
-.timeline-item::after {
-    z-index: 2;
-}
-
-/* ========================================= */
-/* =========== Адаптивность (Мобильные) ===== */
-/* ========================================= */
-
 @media (max-width: 768px) {
-    /* 1. Отступ сверху: компенсирует высоту фиксированной шапки и вырез экрана */
     .article-main {
         padding-top: calc(85px + env(safe-area-inset-top, 0px));
         padding-bottom: 25px;
@@ -186,23 +149,19 @@
         padding: 15px;
     }
 
-    /* 2. Заголовок и метаданные статьи */
-    #articleTitle,
-    .article-title {
+    #articleTitle {
         font-size: 1.4em;
         line-height: 1.3;
         margin-bottom: 10px;
         scroll-margin-top: 90px;
     }
 
-    #articleMeta,
-    .article-meta {
+    #articleMeta {
         font-size: 0.85em;
         margin-bottom: 18px;
         padding-bottom: 10px;
     }
 
-    /* 3. Текст контента статьи */
     #articleContent {
         font-size: 1em;
         line-height: 1.6;
@@ -219,21 +178,5 @@
     #articleContent blockquote {
         margin: 1em 10px;
         padding: 10px 14px;
-    }
-
-    /* 4. Шкала времени: раскрытый блок не перекрывает вертикальную линию */
-    .timeline-item.active,
-    .timeline-item.expanded {
-        position: relative;
-        z-index: 0; /* Фон блока остается под линией (у линии z-index: 1) */
-    }
-
-    /* Заголовки плашек на шкале времени */
-    .timeline-item h2,
-    .timeline-item-title,
-    .timeline-header {
-        font-size: 0.95rem;
-        line-height: 1.35;
-        font-weight: 600;
     }
 }
